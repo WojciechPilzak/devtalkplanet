@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DevTalkPlanet</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Firebase init -->
+    <script type="module" src="../js/firebase.js"></script>
+    <script type="module" src="../js/app.js"></script>
+</head>
+<body>
+<header>
+    <h1>DevTalk Planet</h1>
+    <nav>
+        <a href="#kalendarz">Kalendarz</a>
+        <a href="#archiwum">Archiwum</a>
+        <a href="#partnerzy">Partnerzy</a>
+        <a href="#blog">Blog</a>
+        <a href="#newsletter">Newsletter</a>
+    </nav>
+</header>
+
+<main class="container">
+    <section id="kalendarz">
+        <h2>Kalendarz wydarzeń</h2>
+        <div id="calendar"></div>
+    </section>
+
+    <section id="archiwum">
+        <h2>Archiwum wydarzeń</h2>
+        <div class="event-grid" id="eventArchive"></div>
+
+
+    <div x-data="{
+    events: [],
+    async init() {
+        const res = await fetchEvents();
+        this.events = res;
+    }
+}">
+        <template x-for="event in events" :key="event.id">
+            <article>
+                <h3 x-text="event.title"></h3>
+                <p x-text="event.date"></p>
+            </article>
+        </template>
+    </div>
+    </section>
+
+    <section id="partnerzy">
+        <h2>Nasi Partnerzy</h2>
+        <div class="partner-grid" id="partnerList"></div>
+    </section>
+
+    <section id="blog" x-data="{ search: '', posts: [] }" x-init="loadPosts()" x-id="['blogPost']">
+        <h2>Blog / Aktualności</h2>
+        <input type="text" placeholder="Szukaj..." x-model="search" class="search-input" />
+        <div class="blog-grid">
+            <template x-for="post in filteredPosts()" :key="post.id">
+                <div class="blog-post">
+                    <h3 x-text="post.title"></h3>
+                    <p><em x-text="new Date(post.date).toLocaleDateString()"></em></p>
+                    <p x-text="post.summary"></p>
+                    <template x-if="post.link">
+                        <p><a :href="post.link" target="_blank">Czytaj więcej</a></p>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </section>
+
+    <section id="newsletter" x-data="{ email: '', success: false }">
+        <h2>Zapisz się na newsletter</h2>
+        <form @submit.prevent="saveEmail()">
+            <input type="email" x-model="email" placeholder="Twój e-mail" required />
+            <button type="submit">Zapisz się</button>
+            <p x-show="success" style="color: green;">Dziękujemy za zapis!</p>
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 DevTalk Planet</p>
+</footer>
+</body>
+</html>
