@@ -14,6 +14,6 @@ jobs:
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v14.9.0
         with:
-          args: deploy --only hosting
+          args: deploy --only hosting --project devtalk-planet
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
