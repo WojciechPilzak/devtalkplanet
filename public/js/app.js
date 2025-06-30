@@ -1,10 +1,14 @@
 import Alpine from 'https://unpkg.com/alpinejs@3.x.x/dist/module.esm.js';
 import {storage, ref, getDownloadURL, getDocs, collection, db} from "./firebase.js";
+import calendarApp from "./calendar.js";
+
 
 
 
 //document.addEventListener('alpine:init', () => {
 window.Alpine = Alpine
+
+Alpine.data('calendarApp', calendarApp);
 
     Alpine.data('counter', () => ({
         count: 0,
@@ -26,8 +30,7 @@ window.Alpine = Alpine
                 this.imageUrl = await getDownloadURL(imageRef)
                 const querySnapshout = await getDocs(collection(db, 'events'));
                 this.events = querySnapshout.docs.map(doc => {
-                    id: doc.id,
-                    console.log(doc.data())
+                    id: doc.id
                 });
                 console.log("Wydarzenia:", this.events);
             } catch (error) {

@@ -7,6 +7,9 @@
 
     <!-- Pico.css z CDN -->
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <!--<link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.10/index.global.min.css">-->
+<!--    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.17/main.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.17/main.min.css" />-->
 </head>
 <body>
 
@@ -22,9 +25,117 @@
     <template x-if="imageUrl">
         <img :src="imageUrl" alt="Obrazek z Firebase" style="max-width: 300px;">
     </template>
+
+    <h1 style="text-align:center;">📅 Kalendarz wydarzeń</h1>
+    <div x-ref="calendarContainer" id="calendar"></div>
+
+    <div class="calendar-container" x-data="calendarApp">
+        <h1>Kalendarz Wydarzeń</h1>
+
+        <!-- Loading indicator -->
+        <div x-show="isLoading" class="loading">
+            Ładowanie wydarzeń...
+        </div>
+
+        <!-- Informacje o wydarzeniach -->
+        <div x-show="!isLoading" class="events-info">
+            <strong>Załadowane wydarzenia:</strong>
+            <span x-text="allEvents.length"></span> |
+            <strong>Wyświetlane:</strong>
+            <span x-text="filteredEvents.length"></span>
+            <button @click="refreshEvents()" style="margin-left: 10px; font-size: 12px; padding: 4px 8px;">
+                🔄 Odśwież
+            </button>
+        </div>
+
+        <!-- Kontrolki wyszukiwania -->
+        <div x-show="!isLoading" class="controls">
+            <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Wyszukaj wydarzenia..."
+                    x-model="searchQuery"
+                    @input="filterEvents"
+            >
+
+            <input
+                    type="date"
+                    class="search-input"
+                    x-model="dateFilter"
+                    @change="filterEvents"
+                    title="Filtruj według daty"
+            >
+
+            <button @click="clearFilters">Wyczyść filtry</button>
+
+            <!-- Import/Export -->
+            <input
+                    type="file"
+                    style="display: none;"
+                    @change="loadEventsFromFile"
+                    accept=".json"
+                    id="importFile"
+            >
+            <button @click="document.getElementById('importFile').click()" style="background: #17a2b8;">
+                📁 Import JSON
+            </button>
+            <button @click="exportEvents()" style="background: #28a745;">
+                💾 Export JSON
+            </button>
+        </div>
+
+        <!-- Informacja o wyszukiwaniu -->
+        <div x-show="!isLoading && (searchQuery || dateFilter)" class="search-info">
+            <span x-show="searchQuery">
+                Szukasz: "<strong x-text="searchQuery"></strong>"
+            </span>
+            <span x-show="searchQuery && dateFilter"> | </span>
+            <span x-show="dateFilter">
+                Data: <strong x-text="dateFilter"></strong>
+            </span>
+        </div>
+
+        <!-- Komunikat o braku wyników -->
+        <div x-show="!isLoading && (searchQuery || dateFilter) && filteredEvents.length === 0" class="no-results">
+            Nie znaleziono wydarzeń pasujących do kryteriów wyszukiwania
+        </div>
+
+        <!-- Kontrolki widoku -->
+        <div x-show="!isLoading" class="controls">
+            <button @click="goToPrev()">← Poprzedni</button>
+            <button @click="goToNext()">Następny →</button>
+            <button @click="goToToday()">Dzisiaj</button>
+            <button @click="toggleView('dayGridMonth')" :class="{'active': currentView === 'dayGridMonth'}">Miesiąc</button>
+            <button @click="toggleView('timeGridWeek')" :class="{'active': currentView === 'timeGridWeek'}">Tydzień</button>
+            <button @click="toggleView('timeGridDay')" :class="{'active': currentView === 'timeGridDay'}">Dzień</button>
+            <button @click="toggleView('listWeek')" :class="{'active': currentView === 'listWeek'}">Lista</button>
+        </div>
+
+        <!-- Kalendarz -->
+        <div x-show="!isLoading" x-ref="calendarContainer"></div>
+    </div>
+
 </main>
 <!-- Twój własny skrypt -->
 <script type="module" src="js/app.js"></script>
+<script type="importmap">
+    {
+      "imports": {
+        "@fullcalendar/core": "https://esm.sh/@fullcalendar/core@6.1.17",
+        "@fullcalendar/daygrid": "https://esm.sh/@fullcalendar/daygrid@6.1.17",
+        "@fullcalendar/interaction": "https://esm.sh/@fullcalendar/interaction@6.1.17",
+        "preact": "https://esm.sh/preact"
+      }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
+<!--<script type="module">
+    import calendarApp from './js/calendar.js';
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('calendarApp', calendarApp);
+    });
+</script>-->
 <!-- Alpine.js z CDN -->
 <!--<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>-->
 
