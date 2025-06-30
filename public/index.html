@@ -21,13 +21,10 @@
 
 
     <hr />
-    <h2>Obrazek z Firebase:</h2>
+    <h2>Image from hosting:</h2>
     <template x-if="imageUrl">
-        <img :src="imageUrl" alt="Obrazek z Firebase" style="max-width: 300px;">
+        <img :src="imageUrl" alt="Image from hosting" style="max-width: 300px;">
     </template>
-
-    <h1 style="text-align:center;">📅 Kalendarz wydarzeń</h1>
-    <div x-ref="calendarContainer" id="calendar"></div>
 
     <div class="calendar-container" x-data="calendarApp">
         <h1>Kalendarz Wydarzeń</h1>
