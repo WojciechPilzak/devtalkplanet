@@ -181,7 +181,7 @@ nav {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 }
 
 
@@ -244,4 +244,21 @@ nav {
         display: flex;
         gap: 1rem;
     }
+}
+
+.site-footer {
+    background: #f1f1f1;
+    color: #333;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+}
+.site-footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+.site-footer a:hover {
+    text-decoration: underline;
 }

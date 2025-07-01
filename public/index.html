@@ -17,7 +17,7 @@
     <ul>
         <li>
             <a href="#" class="logo">
-                <img src="img/logo.svg" alt="DevTalk Planet Logo" width="250" height="150" />
+                <img src="img/logo.svg" alt="DevTalk Planet Logo" width="200" height="50" />
             </a>
         </li>
     </ul>
@@ -25,6 +25,8 @@
     <ul :class="{ 'hidden': !open }" class="navigation-links desktop-only">
         <li><a href="#">Events</a></li>
         <li><a href="#">Partners</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Contact</a></li>
         <li>
             <a href="https://youtube.com/@devtalkplanet" target="_blank" aria-label="YouTube">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512">
@@ -33,20 +35,21 @@
 
             </a>
         </li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Community</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
     </ul>
     <aside x-show="open" x-transition class="side-menu">
         <ul>
             <li><a href="#">Events</a></li>
             <li><a href="#">Partners</a></li>
-            <li><a href="#">YouTube Channel</a></li>
-            <li><a href="#">Blog</a></li>
             <li><a href="#">Community</a></li>
-            <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
+            <li>
+                <a href="https://youtube.com/@devtalkplanet" target="_blank" aria-label="YouTube">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512">
+                        <path fill="#FF0000" d="M549.655 124.083c-6.281-23.65-24.764-42.176-48.246-48.525C460.36 64 288 64 288 64s-172.36 0-213.41 11.558c-23.482 6.349-41.965 24.875-48.246 48.525C16 165.077 16 256 16 256s0 90.923 10.344 131.917c6.281 23.65 24.764 42.176 48.246 48.525C115.64 448 288 448 288 448s172.36 0 213.41-11.558c23.482-6.349 41.965-24.875 48.246-48.525C560 346.923 560 256 560 256s0-90.923-10.345-131.917zM232 336V176l142.745 80L232 336z"/>
+                    </svg>
+
+                </a>
+            </li>
         </ul>
     </aside>
     <ul>
@@ -162,6 +165,14 @@
     </div>
 
 </main>
+
+<footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2025 DevTalk Planet. All rights reserved.</p>
+        <p>Powered by nerds, fueled by caffeine ☕</p>
+        <p><a href="#">Contact</a> | <a href="#">Partners</a> | <a href="https://youtube.com/@devtalkplanet" target="_blank">YouTube</a></p>
+    </div>
+</footer>
 <!-- Twój własny skrypt -->
 <script type="module" src="js/app.js"></script>
 <script type="importmap">
