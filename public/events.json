@@ -1,0 +1,100 @@
+{
+  "events": [
+    {
+      "id": "ljc-meetup-july-2025",
+      "title": "London Java Community Meetup",
+      "location": {
+        "venue": "Redis Office",
+        "address": "Floor 5 Bridge House, 4 Borough High St, London SE1 9QQ",
+        "city": "London",
+        "country": "United Kingdom",
+        "map_url": "https://www.google.com/maps?q=Redis+office+London"
+      },
+      "date": "2025-07-20T18:00:00Z",
+      "duration_hours": 3,
+      "description": "Seria nieformalnych wystąpień i networkingu dla społeczności Java w Londynie.",
+      "organizer": {
+        "name": "London Java Community",
+        "powered_by": ["RecWorks"],
+        "sponsors": ["Hazelcast", "Neo4j", "Redis", "Discover"]
+      },
+      "tags": ["java", "networking", "community", "london"],
+      "speakers": [
+        {
+          "name": "Tom Appleyard",
+          "title": "How to design nice PowerPoints",
+          "bio": null,
+          "synopsis": "Death by PowerPoint i jak go uniknąć."
+        },
+        {
+          "name": "Verissimo Ribeiro",
+          "title": "Spring AI: Structuring Unstructured Data",
+          "bio": "VP of Engineering at Landytech",
+          "synopsis": "Budowanie AI z użyciem Spring."
+        }
+      ]
+    },
+    {
+      "id": "warsawjs-meetup-august",
+      "title": "WarsawJS Meetup",
+      "location": {
+        "venue": "Campus Warsaw",
+        "address": "Ząbkowska 33C, 03-736 Warszawa",
+        "city": "Warsaw",
+        "country": "Poland",
+        "map_url": "https://www.google.com/maps?q=Campus+Warsaw"
+      },
+      "date": "2025-08-14T17:30:00Z",
+      "duration_hours": 2,
+      "description": "Warszawskie spotkanie frontendowe z serii WarsawJS. 2 prezentacje + networking.",
+      "organizer": {
+        "name": "WarsawJS",
+        "powered_by": [],
+        "sponsors": ["Google for Startups"]
+      },
+      "tags": ["javascript", "frontend", "meetup", "warsaw"],
+      "speakers": [
+        {
+          "name": "Agnieszka Kowalska",
+          "title": "TypeScript na serio",
+          "bio": null,
+          "synopsis": "Jak wykorzystać typowanie TypeScript na produkcji."
+        },
+        {
+          "name": "Michał Nowak",
+          "title": "Optymalizacja bundle size w React",
+          "bio": null,
+          "synopsis": "Protipy na lekkie bundle i szybki runtime."
+        }
+      ]
+    },
+    {
+      "id": "krakow-ai-september",
+      "title": "Kraków AI Talks",
+      "location": {
+        "venue": "Hubraum Kraków",
+        "address": "Przemysłowa 12, Kraków",
+        "city": "Kraków",
+        "country": "Poland",
+        "map_url": "https://www.google.com/maps?q=Hubraum+Kraków"
+      },
+      "date": "2025-09-05T18:00:00Z",
+      "duration_hours": 2.5,
+      "description": "Nowinki ze świata AI i ML. Luźne rozmowy i demo projektów.",
+      "organizer": {
+        "name": "Kraków AI",
+        "powered_by": [],
+        "sponsors": ["DeepTech Polska"]
+      },
+      "tags": ["ai", "ml", "krakow", "tech-talk"],
+      "speakers": [
+        {
+          "name": "Dr. Piotr Zieliński",
+          "title": "LLM-y w przemyśle",
+          "bio": null,
+          "synopsis": "Jak duże modele językowe znajdują zastosowanie w produkcji."
+        }
+      ]
+    }
+  ]
+}

@@ -8,6 +8,26 @@ import calendarApp from "./calendar.js";
 //document.addEventListener('alpine:init', () => {
 window.Alpine = Alpine
 
+Alpine.data('eventList', () => ({
+    events: [],
+    async init() {
+        const res = await fetch('./events.json');
+        const data = await res.json();
+        this.events = data.events.sort((a, b) => new Date(a.date) - new Date(b.date));
+    },
+    formatDate(dateStr) {
+        const d = new Date(dateStr);
+        return d.toLocaleDateString("pl-PL", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+    }
+}));
+
+
 // Rejestracja eventCountdown przed Alpine.start()
 Alpine.data('eventCountdown', () => ({
     eventDate: new Date("September 19, 2025 00:00:00").getTime(),

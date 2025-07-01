@@ -76,6 +76,48 @@
         <p x-text="countdown" class="countdown"></p>
     </section>
 
+    <section x-data="eventList()" x-init="init()">
+        <h2>Nadchodzące wydarzenia</h2>
+
+        <!-- Gdy brak wydarzeń -->
+        <template x-if="events.length === 0">
+            <p>Brak zaplanowanych wydarzeń.</p>
+        </template>
+
+        <!-- Lista wydarzeń -->
+        <ul role="list">
+            <template x-for="(event, index) in events" :key="index">
+                <li>
+                    <article>
+                        <h3 x-text="event?.title"></h3>
+                        <p>
+                            <strong>Miejsce:</strong>
+                            <span x-text="event?.location?.venue + ', ' + event?.location?.city"></span><br>
+                            <strong>Data:</strong>
+                            <span x-text="formatDate(event?.date)"></span><br>
+                            <strong>Czas trwania:</strong>
+                            <span x-text="(event?.duration_hours || '') + 'h'"></span>
+                        </p>
+                        <p x-text="event?.description"></p>
+
+                        <details>
+                            <summary>Prelegenci</summary>
+                            <ul>
+                                <template x-if="event?.speakers?.length">
+                                    <template x-for="(speaker, i) in event.speakers" :key="i">
+                                        <li>
+                                            <strong x-text="speaker?.name"></strong> –
+                                            <em x-text="speaker?.title"></em>
+                                        </li>
+                                    </template>
+                                </template>
+                            </ul>
+                        </details>
+                    </article>
+                </li>
+            </template>
+        </ul>
+    </section>
 
     <h1>Prosty licznik</h1>
     <p>Wartość: <strong x-text="count"></strong></p>
