@@ -280,14 +280,31 @@ nav li {
     margin: 0;
 }
 .promo-top {
-    background-color: #000;
-    color: #ff0000;
+    background-color: #000000; /* Czarne tło */
+    color: #ffffff;            /* Biały tekst */
     padding: 1.5rem;
     text-align: center;
     font-size: 1.5rem;
     font-family: 'Courier New', monospace;
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    margin: 1rem 0;
+    border-radius: 8px;
+    position: relative;  /* Wykorzystanie pozycji do nakładania warstwy */
 }
 
+/* Półprzezroczysty gradient, ale bardziej intensywny */
+.promo-top::before {
+    content: '';  /* Dodajemy pusty element do nakładania */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, rgba(59, 10, 69, 0.9), rgba(0, 255, 0, 0.9)); /* Wiśniowy do zielonego */
+    z-index: -1;  /* Ustawiamy warstwę poniżej tekstu */
+    border-radius: 8px; /* Dopasowanie zaokrąglonych rogów */
+}
 .promo-top a {
     color: #ff0000;
     font-weight: bold;
