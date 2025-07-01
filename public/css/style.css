@@ -371,3 +371,7 @@ nav li {
     margin: 0;
     padding: 0;
 }
+
+.custom-details summary {
+    text-align: left;
+}
