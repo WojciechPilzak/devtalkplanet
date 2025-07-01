@@ -345,6 +345,8 @@ nav li {
 
 .promo-top {
     border: 1px solid #ff0000;
+    margin: 0;
+    padding: 0;
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
 }
 
@@ -358,4 +360,14 @@ nav li {
     font-size: 1.2rem;
     font-weight: bold;
     opacity: 0.85; /* Zmniejszona przezroczystość dla subtelności */
+}
+
+.promo-logo {
+    width: 500px;  /* Powiększ logo */
+    height: auto;  /* Zabezpiecza proporcje */
+}
+
+.promo-top .h2 {
+    margin: 0;
+    padding: 0;
 }
