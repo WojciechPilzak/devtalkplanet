@@ -279,3 +279,66 @@ nav li {
     padding: 0;
     margin: 0;
 }
+.promo-top {
+    background-color: #000;
+    color: #ff0000;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+.promo-top a {
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.promo-top img {
+    max-width: 150px;
+    margin-top: 1rem;
+}
+
+.promo-top p {
+    margin-bottom: 1rem;
+}
+
+.event-date {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff; /* Zmieniamy na biały */
+    margin-top: 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00; /* Poświata */
+}
+
+/* Animacja matrycowa */
+@keyframes matrix {
+    0% { opacity: 0.1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.1; }
+}
+
+.promo-top {
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+}
+
+.promo-top h2,
+.promo-top .event-date {
+    color: #ffffff; /* Biały tekst */
+    text-shadow: 0 0 1px #ffffff, 0 0 3px #ffffff, 0 0 5px #dcdcdc; /* Delikatna poświata */
+}
+
+.promo-top .event-date {
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.85; /* Zmniejszona przezroczystość dla subtelności */
+}

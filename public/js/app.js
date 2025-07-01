@@ -8,6 +8,30 @@ import calendarApp from "./calendar.js";
 //document.addEventListener('alpine:init', () => {
 window.Alpine = Alpine
 
+// Rejestracja eventCountdown przed Alpine.start()
+Alpine.data('eventCountdown', () => ({
+    eventDate: new Date("September 19, 2025 00:00:00").getTime(),
+    countdown: '',
+    init() {
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = this.eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            this.countdown = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // Jeśli event się zacznie, wyświetl "Event Started!"
+            if (distance < 0) {
+                this.countdown = "Event Started!";
+            }
+        }, 1000);
+    }
+}));
+
 Alpine.data('calendarApp', calendarApp);
 
     Alpine.data('counter', () => ({
@@ -42,9 +66,6 @@ Alpine.start()
 //});
 
 console.log("App.js załadowany.");
-
-
-
 
 /*import {
     db,
