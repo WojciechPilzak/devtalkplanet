@@ -3,16 +3,65 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alpine + Pico z CDN</title>
+    <title>DevTalk Planet</title>
 
     <!-- Pico.css z CDN -->
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css" />
+    <link rel="stylesheet" href="css/style.css">
     <!--<link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.10/index.global.min.css">-->
 <!--    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.17/main.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.17/main.min.css" />-->
 </head>
 <body>
+<nav class="container-fluid" x-data="{ open: false }">
+    <ul>
+        <li>
+            <a href="#" class="logo">
+                <img src="img/logo.svg" alt="DevTalk Planet Logo" width="250" height="150" />
+            </a>
+        </li>
+    </ul>
 
+    <ul :class="{ 'hidden': !open }" class="navigation-links desktop-only">
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Partners</a></li>
+        <li>
+            <a href="https://youtube.com/@devtalkplanet" target="_blank" aria-label="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 576 512">
+                    <path fill="#FF0000" d="M549.655 124.083c-6.281-23.65-24.764-42.176-48.246-48.525C460.36 64 288 64 288 64s-172.36 0-213.41 11.558c-23.482 6.349-41.965 24.875-48.246 48.525C16 165.077 16 256 16 256s0 90.923 10.344 131.917c6.281 23.65 24.764 42.176 48.246 48.525C115.64 448 288 448 288 448s172.36 0 213.41-11.558c23.482-6.349 41.965-24.875 48.246-48.525C560 346.923 560 256 560 256s0-90.923-10.345-131.917zM232 336V176l142.745 80L232 336z"/>
+                </svg>
+
+            </a>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <aside x-show="open" x-transition class="side-menu">
+        <ul>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">YouTube Channel</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </aside>
+    <ul>
+        <li>
+            <button @click="open = !open" aria-label="Toggle menu" style="position: fixed; top: 1rem; right: 1rem; z-index: 1100;">
+                <svg x-show="!open" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <svg x-show="open" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </li>
+    </ul>
+</nav>
 <main class="container" x-data="counter">
     <h1>Prosty licznik</h1>
     <p>Wartość: <strong x-text="count"></strong></p>
