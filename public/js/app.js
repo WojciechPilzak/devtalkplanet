@@ -55,15 +55,8 @@ Alpine.data('eventCountdown', () => ({
 Alpine.data('calendarApp', calendarApp);
 
     Alpine.data('counter', () => ({
-        count: 0,
         imageUrl: '',
         events: [],
-        increment() {
-            this.count++;
-        },
-        decrement() {
-            this.count--;
-        },
 
 
         async init() {

@@ -119,12 +119,6 @@
         </ul>
     </section>
 
-    <h1>Prosty licznik</h1>
-    <p>Wartość: <strong x-text="count"></strong></p>
-    <button @click="increment">Zwiększ</button>
-    <button @click="decrement">Zmniejsz</button>
-
-
     <hr />
     <h2>Image from hosting:</h2>
     <template x-if="imageUrl">
@@ -239,17 +233,6 @@
     }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
-<!--<script type="module">
-    import calendarApp from './js/calendar.js';
-
-    document.addEventListener('alpine:init', () => {
-        Alpine.data('calendarApp', calendarApp);
-    });
-</script>-->
-<!-- Alpine.js z CDN -->
-<!--<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>-->
-
-
 
 </body>
 </html>
