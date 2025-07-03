@@ -375,3 +375,238 @@ nav li {
 .custom-details summary {
     text-align: left;
 }
+
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.event-card {
+    border-radius: var(--pico-border-radius);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    position: relative;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+}
+
+.event-card.past {
+    cursor: pointer;
+}
+
+.event-header {
+    padding: 1rem;
+    background: var(--pico-card-background-color);
+}
+
+.event-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.event-date {
+    color: var(--pico-muted-color);
+    font-size: 0.9rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.event-location {
+    color: var(--pico-muted-color);
+    font-size: 0.85rem;
+    margin: 0 0 1rem 0;
+}
+
+.event-description {
+    font-size: 0.9rem;
+    margin: 0 0 1rem 0;
+}
+
+.speakers-list {
+    border-top: 1px solid var(--pico-muted-border-color);
+    padding-top: 1rem;
+}
+
+.speaker {
+    margin-bottom: 0.75rem;
+}
+
+.speaker-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.speaker-title {
+    font-style: italic;
+    color: var(--pico-muted-color);
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+}
+
+.speaker-synopsis {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tag {
+    background: var(--pico-primary);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+}
+
+.event-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-upcoming {
+    background: #28a745;
+    color: white;
+}
+
+.status-past {
+    background: #6c757d;
+    color: white;
+}
+
+.gallery-info {
+    background: var(--pico-primary-background);
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: var(--pico-border-radius);
+    text-align: center;
+}
+
+.gallery-thumbnail {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--pico-border-radius);
+    margin-bottom: 0.5rem;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    position: relative;
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--pico-border-radius);
+}
+
+.modal-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.image-counter {
+    color: white;
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--pico-border-radius);
+    font-size: 0.9rem;
+}
+
+.btn-close {
+    position: absolute;
+    top: -3rem;
+    right: 0;
+}
+
+.thumbnails-strip {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    margin-top: 1rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: var(--pico-border-radius);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+}
+
+.thumbnail.active,
+.thumbnail:hover {
+    opacity: 1;
+    outline: 2px solid var(--pico-primary);
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+}
+
+.filter-tab {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    color: var(--pico-muted-color);
+    transition: all 0.2s;
+}
+
+.filter-tab.active {
+    color: var(--pico-primary);
+    border-bottom-color: var(--pico-primary);
+}
+
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-controls {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

@@ -65,7 +65,7 @@
         </li>
     </ul>
 </nav>
-<main class="container" x-data="counter">
+<main class="container">
     <section x-data="eventCountdown" x-init="init" class="promo-top">
         <h2>
             <a href="https://confitura.pl" target="_blank" rel="noopener noreferrer">
@@ -130,7 +130,7 @@
     </section>
 
     <hr />
-    <h2>Image from hosting:</h2>
+<!--    <h2>Image from hosting:</h2>
     <template x-if="imageUrl">
         <img :src="imageUrl" alt="Image from hosting" style="max-width: 300px;">
     </template>
@@ -138,12 +138,12 @@
     <div class="calendar-container" x-data="calendarApp">
         <h1>Kalendarz Wydarzeń</h1>
 
-        <!-- Loading indicator -->
+        &lt;!&ndash; Loading indicator &ndash;&gt;
         <div x-show="isLoading" class="loading">
             Ładowanie wydarzeń...
         </div>
 
-        <!-- Informacje o wydarzeniach -->
+        &lt;!&ndash; Informacje o wydarzeniach &ndash;&gt;
         <div x-show="!isLoading" class="events-info">
             <strong>Załadowane wydarzenia:</strong>
             <span x-text="allEvents.length"></span> |
@@ -154,7 +154,7 @@
             </button>
         </div>
 
-        <!-- Kontrolki wyszukiwania -->
+        &lt;!&ndash; Kontrolki wyszukiwania &ndash;&gt;
         <div x-show="!isLoading" class="controls">
             <input
                     type="text"
@@ -174,7 +174,7 @@
 
             <button @click="clearFilters">Wyczyść filtry</button>
 
-            <!-- Import/Export -->
+            &lt;!&ndash; Import/Export &ndash;&gt;
             <input
                     type="file"
                     style="display: none;"
@@ -190,7 +190,7 @@
             </button>
         </div>
 
-        <!-- Informacja o wyszukiwaniu -->
+        &lt;!&ndash; Informacja o wyszukiwaniu &ndash;&gt;
         <div x-show="!isLoading && (searchQuery || dateFilter)" class="search-info">
             <span x-show="searchQuery">
                 Szukasz: "<strong x-text="searchQuery"></strong>"
@@ -201,12 +201,12 @@
             </span>
         </div>
 
-        <!-- Komunikat o braku wyników -->
+        &lt;!&ndash; Komunikat o braku wyników &ndash;&gt;
         <div x-show="!isLoading && (searchQuery || dateFilter) && filteredEvents.length === 0" class="no-results">
             Nie znaleziono wydarzeń pasujących do kryteriów wyszukiwania
         </div>
 
-        <!-- Kontrolki widoku -->
+        &lt;!&ndash; Kontrolki widoku &ndash;&gt;
         <div x-show="!isLoading" class="controls">
             <button @click="goToPrev()">← Poprzedni</button>
             <button @click="goToNext()">Następny →</button>
@@ -217,10 +217,135 @@
             <button @click="toggleView('listWeek')" :class="{'active': currentView === 'listWeek'}">Lista</button>
         </div>
 
-        <!-- Kalendarz -->
+        &lt;!&ndash; Kalendarz &ndash;&gt;
         <div x-show="!isLoading" x-ref="calendarContainer"></div>
+    </div>-->
+
+<!--<section x-data="eventApp" >
+
+    <header>
+        <h1>Event Manager</h1>
+        <p>Zarządzanie eventami i galeriami zdjęć</p>
+    </header>
+
+    &lt;!&ndash; Filtry &ndash;&gt;
+    <div class="filter-tabs">
+        <div class="filter-tab"
+             :class="{ active: currentFilter === 'all' }"
+             @click="currentFilter = 'all'">
+            Wszystkie (<span x-text="events.length"></span>)
+        </div>
+        <div class="filter-tab"
+             :class="{ active: currentFilter === 'upcoming' }"
+             @click="currentFilter = 'upcoming'">
+            Nadchodzące (<span x-text="upcomingEvents.length"></span>)
+        </div>
+        <div class="filter-tab"
+             :class="{ active: currentFilter === 'past' }"
+             @click="currentFilter = 'past'">
+            Zakończone (<span x-text="pastEvents.length"></span>)
+        </div>
     </div>
 
+    &lt;!&ndash; Lista eventów &ndash;&gt;
+    <section class="events-grid">
+        <template x-for="event in filteredEvents" :key="event.id">
+            <article class="event-card"
+                     :class="{ past: isPastEvent(event) }"
+                     @click="isPastEvent(event) && event.gallery ? openGallery(event) : null">
+
+                <div :class="`event-status status-${isPastEvent(event) ? 'past' : 'upcoming'}`"
+                     x-text="isPastEvent(event) ? 'Zakończony' : 'Nadchodzący'">
+                </div>
+
+                <div class="event-header">
+                    <h3 class="event-title" x-text="event.title"></h3>
+                    <p class="event-date" x-text="formatDate(event.date)"></p>
+                    <p class="event-location" x-text="`${event.location.venue}, ${event.location.city}`"></p>
+                    <p class="event-description" x-text="event.description"></p>
+
+                    &lt;!&ndash; Speakers &ndash;&gt;
+                    <div class="speakers-list">
+                        <template x-for="speaker in event.speakers" :key="speaker.name">
+                            <div class="speaker">
+                                <p class="speaker-name" x-text="speaker.name"></p>
+                                <p class="speaker-title" x-text="speaker.title"></p>
+                                <p class="speaker-synopsis" x-text="speaker.synopsis"></p>
+                            </div>
+                        </template>
+                    </div>
+
+                    &lt;!&ndash; Tags &ndash;&gt;
+                    <div class="tags">
+                        <template x-for="tag in event.tags" :key="tag">
+                            <span class="tag" x-text="tag"></span>
+                        </template>
+                    </div>
+
+                    &lt;!&ndash; Gallery info dla zakończonych eventów &ndash;&gt;
+                    <template x-if="isPastEvent(event) && event.gallery">
+                        <div class="gallery-info">
+                            <img :src="event.gallery.thumbnail"
+                                 class="gallery-thumbnail"
+                                 :alt="`Miniaturka ${event.title}`">
+                            <p><strong x-text="event.gallery.images.length"></strong> zdjęć</p>
+                            <small>Kliknij aby otworzyć galerię</small>
+                        </div>
+                    </template>
+                </div>
+            </article>
+        </template>
+    </section>
+
+    &lt;!&ndash; Modal galerii &ndash;&gt;
+    <div x-show="showModal"
+         x-transition.opacity
+         class="modal-overlay"
+         @click.self="closeGallery()"
+         @keydown.escape.window="closeGallery()">
+
+        <div class="modal-content">
+            <img :src="currentImage"
+                 :alt="currentEvent?.title"
+                 class="modal-image"
+                 @click.stop>
+
+            <div class="modal-controls">
+                <button class="secondary"
+                        @click="prevImage()"
+                        :disabled="currentIndex === 0">
+                    ← Poprzednie
+                </button>
+
+                <div class="image-counter"
+                     x-text="`${currentIndex + 1} / ${currentEvent?.gallery?.images.length || 0}`">
+                </div>
+
+                <button class="secondary"
+                        @click="nextImage()"
+                        :disabled="currentIndex === (currentEvent?.gallery?.images.length - 1)">
+                    Następne →
+                </button>
+
+                <button class="btn-close contrast"
+                        @click="closeGallery()">
+                    Zamknij
+                </button>
+            </div>
+
+            &lt;!&ndash; Miniaturki &ndash;&gt;
+            <div class="thumbnails-strip">
+                <template x-for="(image, index) in currentEvent?.gallery?.images || []" :key="index">
+                    <img :src="getThumbUrl(image)"
+                         :class="{'thumbnail': true, 'active': index === currentIndex}"
+                         @click="currentIndex = index"
+                         :alt="`Zdjęcie ${index + 1}`">
+                </template>
+            </div>
+        </div>
+    </div>
+
+</section>-->
 </main>
 
 <footer class="site-footer">

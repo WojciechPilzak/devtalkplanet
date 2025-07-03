@@ -35,7 +35,7 @@
       ]
     },
     {
-      "id": "warsawjs-meetup-august",
+      "id": "warsawjs-meetup-january",
       "title": "WarsawJS Meetup",
       "location": {
         "venue": "Campus Warsaw",
@@ -44,7 +44,7 @@
         "country": "Poland",
         "map_url": "https://www.google.com/maps?q=Campus+Warsaw"
       },
-      "date": "2025-08-14T17:30:00Z",
+      "date": "2025-01-14T17:30:00Z",
       "duration_hours": 2,
       "description": "Warszawskie spotkanie frontendowe z serii WarsawJS. 2 prezentacje + networking.",
       "organizer": {
@@ -57,7 +57,7 @@
         {
           "name": "Agnieszka Kowalska",
           "title": "TypeScript na serio",
-          "bio": null,
+          "bio": "Senior Frontend Developer w Allegro",
           "synopsis": "Jak wykorzystać typowanie TypeScript na produkcji."
         },
         {
@@ -66,7 +66,18 @@
           "bio": null,
           "synopsis": "Protipy na lekkie bundle i szybki runtime."
         }
-      ]
+      ],
+      "gallery": {
+        "cloudinaryFolder": "events/warsawjs-january-2025",
+        "thumbnail": "https://res.cloudinary.com/demo/image/upload/c_fill,h_120,w_350/samples/people/kitchen-bar.jpg",
+        "images": [
+          "https://res.cloudinary.com/demo/image/upload/samples/people/kitchen-bar.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/people/jazz.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/people/smiling-man.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/landscapes/nature-mountains.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/landscapes/beach-boat.jpg"
+        ]
+      }
     },
     {
       "id": "krakow-ai-september",
@@ -91,8 +102,86 @@
         {
           "name": "Dr. Piotr Zieliński",
           "title": "LLM-y w przemyśle",
-          "bio": null,
+          "bio": "Research Scientist w OpenAI, wcześniej Google Brain",
           "synopsis": "Jak duże modele językowe znajdują zastosowanie w produkcji."
+        }
+      ]
+    },
+    {
+      "id": "react-warsaw-meetup-december",
+      "title": "React Warsaw Meetup",
+      "location": {
+        "venue": "Coworking Mindspace",
+        "address": "Rondo ONZ 1, Warszawa",
+        "city": "Warsaw",
+        "country": "Poland",
+        "map_url": "https://www.google.com/maps?q=Mindspace+Warsaw"
+      },
+      "date": "2024-12-10T18:00:00Z",
+      "duration_hours": 2.5,
+      "description": "Spotkanie warszawskiej społeczności React. Ciekawe prezentacje i networking.",
+      "organizer": {
+        "name": "React Warsaw",
+        "powered_by": ["ReactPoland"],
+        "sponsors": ["Microsoft", "Vercel"]
+      },
+      "tags": ["react", "javascript", "frontend", "warsaw"],
+      "speakers": [
+        {
+          "name": "Katarzyna Janocha",
+          "title": "React Server Components w praktyce",
+          "bio": "Tech Lead w Shopify",
+          "synopsis": "Jak wykorzystać RSC do budowania szybkich aplikacji."
+        },
+        {
+          "name": "Jakub Kowalski",
+          "title": "Zustand vs Redux Toolkit",
+          "bio": null,
+          "synopsis": "Porównanie popularnych rozwiązań do state management."
+        }
+      ],
+      "gallery": {
+        "cloudinaryFolder": "events/react-warsaw-december-2024",
+        "thumbnail": "https://res.cloudinary.com/demo/image/upload/c_fill,h_120,w_350/samples/people/boy-snow-hoodie.jpg",
+        "images": [
+          "https://res.cloudinary.com/demo/image/upload/samples/people/boy-snow-hoodie.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/people/smiling-man.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/food/dessert.jpg",
+          "https://res.cloudinary.com/demo/image/upload/samples/animals/three-dogs.jpg"
+        ]
+      }
+    },
+    {
+      "id": "devops-gdansk-october",
+      "title": "DevOps Gdańsk",
+      "location": {
+        "venue": "Olivia Business Centre",
+        "address": "Olivia Six, al. Grunwaldzka 472, Gdańsk",
+        "city": "Gdańsk",
+        "country": "Poland",
+        "map_url": "https://www.google.com/maps?q=Olivia+Business+Centre"
+      },
+      "date": "2025-10-22T17:00:00Z",
+      "duration_hours": 3,
+      "description": "Spotkanie poświęcone najnowszym trendom w DevOps i cloud computing.",
+      "organizer": {
+        "name": "DevOps Gdańsk",
+        "powered_by": [],
+        "sponsors": ["AWS", "Docker", "GitLab"]
+      },
+      "tags": ["devops", "cloud", "kubernetes", "gdansk"],
+      "speakers": [
+        {
+          "name": "Anna Wiśniewska",
+          "title": "Kubernetes w małej firmie",
+          "bio": "DevOps Engineer w Allegro",
+          "synopsis": "Czy Kubernetes ma sens w startupie? Praktyczne porady."
+        },
+        {
+          "name": "Tomasz Nowak",
+          "title": "GitOps with ArgoCD",
+          "bio": null,
+          "synopsis": "Automatyzacja deploymentów z użyciem GitOps."
         }
       ]
     }

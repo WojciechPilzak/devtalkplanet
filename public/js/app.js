@@ -75,10 +75,162 @@ Alpine.data('calendarApp', calendarApp);
             }
         }
     }))
+
+
+Alpine.data('eventApp', () => ({
+    // State
+    showModal: false,
+    currentEvent: null,
+    currentIndex: 0,
+    currentFilter: 'all',
+    events: [],
+
+    // Init - ładowanie danych z JSON
+    async init() {
+        try {
+            const res = await fetch('./events.json');
+            const data = await res.json();
+            this.events = data.events.sort((a, b) => new Date(a.date) - new Date(b.date));
+        } catch (error) {
+            console.error('Błąd ładowania eventów:', error);
+            this.events = [];
+        }
+
+
+    },
+
+    // Computed properties
+    get filteredEvents() {
+        if (this.currentFilter === 'upcoming') return this.upcomingEvents;
+        if (this.currentFilter === 'past') return this.pastEvents;
+        return this.events;
+    },
+
+    get upcomingEvents() {
+        return this.events.filter(event => !this.isPastEvent(event));
+    },
+
+    get pastEvents() {
+        return this.events.filter(event => this.isPastEvent(event));
+    },
+
+    get currentImage() {
+        if (!this.currentEvent?.gallery?.images) return '';
+        return this.currentEvent.gallery.images[this.currentIndex];
+    },
+
+    // Methods
+    isPastEvent(event) {
+        return new Date(event.date) < new Date();
+    },
+
+    formatDate(dateString) {
+        const date = new Date(dateString);
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        return date.toLocaleDateString('pl-PL', options);
+    },
+
+    openGallery(event) {
+        if (!event.gallery) return;
+
+        this.currentEvent = event;
+        this.currentIndex = 0;
+        this.showModal = true;
+        document.body.style.overflow = 'hidden';
+    },
+
+    closeGallery() {
+        this.showModal = false;
+        this.currentEvent = null;
+        this.currentIndex = 0;
+        document.body.style.overflow = 'auto';
+    },
+
+    nextImage() {
+        if (this.currentIndex < this.currentEvent.gallery.images.length - 1) {
+            this.currentIndex++;
+        }
+    },
+
+    prevImage() {
+        if (this.currentIndex > 0) {
+            this.currentIndex--;
+        }
+    },
+
+    getThumbUrl(imageUrl) {
+        // Cloudinary miniaturki
+        return imageUrl.replace('/upload/', '/upload/c_fill,h_60,w_80/');
+    },
+
+    // Dodatkowe metody dla zarządzania eventami
+    addEvent(eventData) {
+        this.events.push(eventData);
+        this.events.sort((a, b) => new Date(a.date) - new Date(b.date));
+    },
+
+    updateEvent(eventId, updates) {
+        const index = this.events.findIndex(e => e.id === eventId);
+        if (index !== -1) {
+            this.events[index] = { ...this.events[index], ...updates };
+        }
+    },
+
+    // Dodanie galerii do zakończonego eventu
+    addGalleryToEvent(eventId, galleryData) {
+        this.updateEvent(eventId, { gallery: galleryData });
+    },
+
+    // Automatyczne ładowanie zdjęć z Cloudinary (opcjonalne)
+    async loadGalleryFromCloudinary(eventId, cloudinaryFolder) {
+        try {
+            // Tutaj będzie wywołanie do Cloudinary API
+            const response = await fetch(
+                `https://res.cloudinary.com/YOUR_CLOUD_NAME/image/list/${cloudinaryFolder}.json`
+            );
+            const data = await response.json();
+
+            const images = data.resources.map(img =>
+                `https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/${img.public_id}`
+            );
+
+            const galleryData = {
+                cloudinaryFolder: cloudinaryFolder,
+                thumbnail: this.getThumbUrl(images[0]),
+                images: images
+            };
+
+            this.addGalleryToEvent(eventId, galleryData);
+
+        } catch (error) {
+            console.error('Błąd ładowania galerii:', error);
+        }
+    }
+}));
+
+// Obsługa klawiatury dla galerii
+
 Alpine.start()
 //});
-
+console.log('Dostępne komponenty:', Alpine.store || 'brak');
 console.log("App.js załadowany.");
+
+document.addEventListener('keydown', function(e) {
+    const app = Alpine.$data(document.querySelector('[x-data="eventApp"]'));
+    if (!app || !app.showModal) return;
+
+    if (e.key === 'ArrowRight') {
+        app.nextImage();
+    } else if (e.key === 'ArrowLeft') {
+        app.prevImage();
+    }
+});
 
 /*import {
     db,
