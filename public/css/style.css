@@ -610,3 +610,126 @@ nav li {
         gap: 0.75rem;
     }
 }
+
+ .filters button {
+     margin: 1rem 0;
+     padding: 0.5rem 1rem;
+     cursor: pointer;
+ }
+.event-list {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.event-list > li {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+@media (max-width: 600px) {
+    .event-card {
+        font-size: 0.9rem;
+    }
+
+    .event-card h3 {
+        font-size: 1rem;
+    }
+
+    .event-card p,
+    .event-card small {
+        font-size: 0.85rem;
+    }
+
+    .event-card img {
+        max-width: 100px;
+    }
+}
+
+
+.event-card-new {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.event-card-content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
+}
+
+.event-text {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.event-text h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.event-thumb {
+    flex: 0 0 auto;
+}
+
+.event-thumb img {
+    max-width: 160px;
+    border-radius: 0.5rem;
+    height: auto;
+}
+
+.event-tags {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Mobile: obrazek pod spodem */
+@media (max-width: 600px) {
+    .event-text h3 {
+        font-size: 1rem;
+    }
+
+    .event-thumb img {
+        max-width: 100px;
+    }
+
+    .event-tags {
+        font-size: 0.8rem;
+    }
+}
+
+
+.event-details-toggle {
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.details-toggle-btn {
+    background: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    color: #0366d6;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0;
+}
+
+.details-toggle-btn:hover {
+    text-decoration: underline;
+}
+
+.details-content {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: #333;
+}
