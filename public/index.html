@@ -20,9 +20,6 @@
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>
-    <!--<link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.10/index.global.min.css">-->
-    <!--    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.17/main.min.css" />
-        <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.17/main.min.css" />-->
 </head>
 <body>
 <nav class="container-fluid" x-data="{ open: false }">
@@ -92,276 +89,8 @@
         <p x-text="countdown" class="countdown"></p>
     </section>
 
-    <!--<section x-data="eventList()" x-init="init()">
-        <h2>Nadchodzące wydarzenia</h2>
-
-        &lt;!&ndash; Gdy brak wydarzeń &ndash;&gt;
-        <template x-if="events.length === 0">
-            <p>Brak zaplanowanych wydarzeń.</p>
-        </template>
-
-        &lt;!&ndash; Lista wydarzeń &ndash;&gt;
-        <ul role="list">
-            <template x-for="(event, index) in events" :key="index">
-                <li>
-                    <article>
-                        <header style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-                            <h3 x-text="event?.title"></h3>
-                            <div style="font-size: 0.9rem; color: gray;">
-                                <span x-text="formatDate(event?.date)"></span> ·
-                                <span x-text="event?.location?.city"></span>
-                            </div>
-                        </header>
-
-                        <details>
-                            <summary>Szczegóły wydarzenia</summary>
-
-                            <p>
-                                <strong>Miejsce:</strong>
-                                <span x-text="event?.location?.venue + ', ' + event?.location?.address"></span><br>
-                                <strong>Czas trwania:</strong>
-                                <span x-text="(event?.duration_hours || '') + 'h'"></span>
-                            </p>
-
-                            <p x-text="event?.description"></p>
-
-                            <details>
-                                <summary>Prelegenci</summary>
-                                <ul>
-                                    <template x-if="event?.speakers?.length">
-                                        <template x-for="(speaker, i) in event.speakers" :key="i">
-                                            <li>
-                                                <strong x-text="speaker?.name"></strong> –
-                                                <em x-text="speaker?.title"></em>
-                                            </li>
-                                        </template>
-                                    </template>
-                                </ul>
-                            </details>
-                        </details>
-                    </article>
-                </li>
-            </template>
-        </ul>
-    </section>-->
-
     <hr/>
-    <!--    <h2>Image from hosting:</h2>
-        <template x-if="imageUrl">
-            <img :src="imageUrl" alt="Image from hosting" style="max-width: 300px;">
-        </template>
 
-        <div class="calendar-container" x-data="calendarApp">
-            <h1>Kalendarz Wydarzeń</h1>
-
-            &lt;!&ndash; Loading indicator &ndash;&gt;
-            <div x-show="isLoading" class="loading">
-                Ładowanie wydarzeń...
-            </div>
-
-            &lt;!&ndash; Informacje o wydarzeniach &ndash;&gt;
-            <div x-show="!isLoading" class="events-info">
-                <strong>Załadowane wydarzenia:</strong>
-                <span x-text="allEvents.length"></span> |
-                <strong>Wyświetlane:</strong>
-                <span x-text="filteredEvents.length"></span>
-                <button @click="refreshEvents()" style="margin-left: 10px; font-size: 12px; padding: 4px 8px;">
-                    🔄 Odśwież
-                </button>
-            </div>
-
-            &lt;!&ndash; Kontrolki wyszukiwania &ndash;&gt;
-            <div x-show="!isLoading" class="controls">
-                <input
-                        type="text"
-                        class="search-input"
-                        placeholder="Wyszukaj wydarzenia..."
-                        x-model="searchQuery"
-                        @input="filterEvents"
-                >
-
-                <input
-                        type="date"
-                        class="search-input"
-                        x-model="dateFilter"
-                        @change="filterEvents"
-                        title="Filtruj według daty"
-                >
-
-                <button @click="clearFilters">Wyczyść filtry</button>
-
-                &lt;!&ndash; Import/Export &ndash;&gt;
-                <input
-                        type="file"
-                        style="display: none;"
-                        @change="loadEventsFromFile"
-                        accept=".json"
-                        id="importFile"
-                >
-                <button @click="document.getElementById('importFile').click()" style="background: #17a2b8;">
-                    📁 Import JSON
-                </button>
-                <button @click="exportEvents()" style="background: #28a745;">
-                    💾 Export JSON
-                </button>
-            </div>
-
-            &lt;!&ndash; Informacja o wyszukiwaniu &ndash;&gt;
-            <div x-show="!isLoading && (searchQuery || dateFilter)" class="search-info">
-                <span x-show="searchQuery">
-                    Szukasz: "<strong x-text="searchQuery"></strong>"
-                </span>
-                <span x-show="searchQuery && dateFilter"> | </span>
-                <span x-show="dateFilter">
-                    Data: <strong x-text="dateFilter"></strong>
-                </span>
-            </div>
-
-            &lt;!&ndash; Komunikat o braku wyników &ndash;&gt;
-            <div x-show="!isLoading && (searchQuery || dateFilter) && filteredEvents.length === 0" class="no-results">
-                Nie znaleziono wydarzeń pasujących do kryteriów wyszukiwania
-            </div>
-
-            &lt;!&ndash; Kontrolki widoku &ndash;&gt;
-            <div x-show="!isLoading" class="controls">
-                <button @click="goToPrev()">← Poprzedni</button>
-                <button @click="goToNext()">Następny →</button>
-                <button @click="goToToday()">Dzisiaj</button>
-                <button @click="toggleView('dayGridMonth')" :class="{'active': currentView === 'dayGridMonth'}">Miesiąc</button>
-                <button @click="toggleView('timeGridWeek')" :class="{'active': currentView === 'timeGridWeek'}">Tydzień</button>
-                <button @click="toggleView('timeGridDay')" :class="{'active': currentView === 'timeGridDay'}">Dzień</button>
-                <button @click="toggleView('listWeek')" :class="{'active': currentView === 'listWeek'}">Lista</button>
-            </div>
-
-            &lt;!&ndash; Kalendarz &ndash;&gt;
-            <div x-show="!isLoading" x-ref="calendarContainer"></div>
-        </div>-->
-
-    <!--<section x-data="eventApp" >
-
-        <header>
-            <h1>Event Manager</h1>
-            <p>Zarządzanie eventami i galeriami zdjęć</p>
-        </header>
-
-        &lt;!&ndash; Filtry &ndash;&gt;
-        <div class="filter-tabs">
-            <div class="filter-tab"
-                 :class="{ active: currentFilter === 'all' }"
-                 @click="currentFilter = 'all'">
-                Wszystkie (<span x-text="events.length"></span>)
-            </div>
-            <div class="filter-tab"
-                 :class="{ active: currentFilter === 'upcoming' }"
-                 @click="currentFilter = 'upcoming'">
-                Nadchodzące (<span x-text="upcomingEvents.length"></span>)
-            </div>
-            <div class="filter-tab"
-                 :class="{ active: currentFilter === 'past' }"
-                 @click="currentFilter = 'past'">
-                Zakończone (<span x-text="pastEvents.length"></span>)
-            </div>
-        </div>
-
-        &lt;!&ndash; Lista eventów &ndash;&gt;
-        <section class="events-grid">
-            <template x-for="event in filteredEvents" :key="event.id">
-                <article class="event-card"
-                         :class="{ past: isPastEvent(event) }"
-                         @click="isPastEvent(event) && event.gallery ? openGallery(event) : null">
-
-                    <div :class="`event-status status-${isPastEvent(event) ? 'past' : 'upcoming'}`"
-                         x-text="isPastEvent(event) ? 'Zakończony' : 'Nadchodzący'">
-                    </div>
-
-                    <div class="event-header">
-                        <h3 class="event-title" x-text="event.title"></h3>
-                        <p class="event-date" x-text="formatDate(event.date)"></p>
-                        <p class="event-location" x-text="`${event.location.venue}, ${event.location.city}`"></p>
-                        <p class="event-description" x-text="event.description"></p>
-
-                        &lt;!&ndash; Speakers &ndash;&gt;
-                        <div class="speakers-list">
-                            <template x-for="speaker in event.speakers" :key="speaker.name">
-                                <div class="speaker">
-                                    <p class="speaker-name" x-text="speaker.name"></p>
-                                    <p class="speaker-title" x-text="speaker.title"></p>
-                                    <p class="speaker-synopsis" x-text="speaker.synopsis"></p>
-                                </div>
-                            </template>
-                        </div>
-
-                        &lt;!&ndash; Tags &ndash;&gt;
-                        <div class="tags">
-                            <template x-for="tag in event.tags" :key="tag">
-                                <span class="tag" x-text="tag"></span>
-                            </template>
-                        </div>
-
-                        &lt;!&ndash; Gallery info dla zakończonych eventów &ndash;&gt;
-                        <template x-if="isPastEvent(event) && event.gallery">
-                            <div class="gallery-info">
-                                <img :src="event.gallery.thumbnail"
-                                     class="gallery-thumbnail"
-                                     :alt="`Miniaturka ${event.title}`">
-                                <p><strong x-text="event.gallery.images.length"></strong> zdjęć</p>
-                                <small>Kliknij aby otworzyć galerię</small>
-                            </div>
-                        </template>
-                    </div>
-                </article>
-            </template>
-        </section>
-
-        &lt;!&ndash; Modal galerii &ndash;&gt;
-        <div x-show="showModal"
-             x-transition.opacity
-             class="modal-overlay"
-             @click.self="closeGallery()"
-             @keydown.escape.window="closeGallery()">
-
-            <div class="modal-content">
-                <img :src="currentImage"
-                     :alt="currentEvent?.title"
-                     class="modal-image"
-                     @click.stop>
-
-                <div class="modal-controls">
-                    <button class="secondary"
-                            @click="prevImage()"
-                            :disabled="currentIndex === 0">
-                        ← Poprzednie
-                    </button>
-
-                    <div class="image-counter"
-                         x-text="`${currentIndex + 1} / ${currentEvent?.gallery?.images.length || 0}`">
-                    </div>
-
-                    <button class="secondary"
-                            @click="nextImage()"
-                            :disabled="currentIndex === (currentEvent?.gallery?.images.length - 1)">
-                        Następne →
-                    </button>
-
-                    <button class="btn-close contrast"
-                            @click="closeGallery()">
-                        Zamknij
-                    </button>
-                </div>
-
-                &lt;!&ndash; Miniaturki &ndash;&gt;
-                <div class="thumbnails-strip">
-                    <template x-for="(image, index) in currentEvent?.gallery?.images || []" :key="index">
-                        <img :src="getThumbUrl(image)"
-                             :class="{'thumbnail': true, 'active': index === currentIndex}"
-                             @click="currentIndex = index"
-                             :alt="`Zdjęcie ${index + 1}`">
-                    </template>
-                </div>
-            </div>
-        </div>
-
-    </section>-->
     <section x-data="events">
 
         <section x-data="{ showFilters: false }" class="filters filters-compact" style="margin-bottom: 2rem;">
@@ -404,7 +133,8 @@
                                 <li style="background: #eee; padding: 0.25rem 0.5rem; border-radius: 0.5rem;">
                                     <span x-text="tech"></span>
                                     <button @click="removeTechnology(tech)"
-                                            style="border: none; background: transparent; cursor: pointer;">×</button>
+                                            style="border: none; background: transparent; cursor: pointer;">×
+                                    </button>
                                 </li>
                             </template>
                         </ul>
@@ -427,7 +157,8 @@
                                 <li style="background: #eee; padding: 0.25rem 0.5rem; border-radius: 0.5rem;">
                                     <span x-text="tag"></span>
                                     <button @click="removeTag(tag)"
-                                            style="border: none; background: transparent; cursor: pointer;">×</button>
+                                            style="border: none; background: transparent; cursor: pointer;">×
+                                    </button>
                                 </li>
                             </template>
                         </ul>
@@ -435,78 +166,6 @@
                 </form>
             </div>
         </section>
-
-        <!--        &lt;!&ndash; Filtry &ndash;&gt;
-                <section>
-                    <section x-data="{ showFilters: false }" class="filters">
-                        <button @click="showFilters = !showFilters" type="button">
-                            <span x-text="showFilters ? 'Ukryj filtry' : 'Pokaż filtry'"></span>
-                        </button>
-
-                        <div x-show="showFilters" x-transition>
-                            <form @change.prevent>
-                                <label>
-                                    Miasto:
-                                    <select x-model="selectedCity">
-                                        <option value="">Wszystkie</option>
-                                        <template x-for="city in uniqueCities" :key="city">
-                                            <option :value="city" x-text="city"></option>
-                                        </template>
-                                    </select>
-                                </label>
-
-                                <div>
-                                    <label>
-                                        Dodaj technologię:
-                                        <select @change="addTechnology($event)" :value="''">
-                                            <option value="">Wybierz technologię</option>
-                                            <template x-for="tech in availableTechnologies" :key="tech">
-                                                <option :value="tech" x-text="tech"></option>
-                                            </template>
-                                        </select>
-                                    </label>
-
-                                    &lt;!&ndash; Wybrane technologie jako "badge" &ndash;&gt;
-                                    <ul style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-                                        <template x-for="tech in selectedTechnologies" :key="tech">
-                                            <li style="background: #eee; padding: 0.25rem 0.5rem; border-radius: 0.5rem;">
-                                                <span x-text="tech"></span>
-                                                <button @click="removeTechnology(tech)"
-                                                        style="border: none; background: transparent; cursor: pointer;">×
-                                                </button>
-                                            </li>
-                                        </template>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <label>
-                                        Dodaj tag:
-                                        <select @change="addTag($event)" :value="''">
-                                            <option value="">Wybierz tag</option>
-                                            <template x-for="tag in availableTags" :key="tag">
-                                                <option :value="tag" x-text="tag"></option>
-                                            </template>
-                                        </select>
-                                    </label>
-
-                                    &lt;!&ndash; Wybrane tagi jako "badge" &ndash;&gt;
-                                    <ul style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;">
-                                        <template x-for="tag in selectedTags" :key="tag">
-                                            <li style="background: #eee; padding: 0.25rem 0.5rem; border-radius: 0.5rem;">
-                                                <span x-text="tag"></span>
-                                                <button @click="removeTag(tag)"
-                                                        style="border: none; background: transparent; cursor: pointer;">×
-                                                </button>
-                                            </li>
-                                        </template>
-                                    </ul>
-                                </div>
-                            </form>
-                        </div>
-                    </section>
-
-                </section>-->
 
         <!-- Przyszłe -->
         <section>
@@ -539,25 +198,11 @@
                                     <p><strong>Miejsce:</strong> <span x-text="event.location"></span></p>
                                     <p><strong>Czas trwania:</strong> <span x-text="event.duration"></span></p>
                                     <p x-text="event.description"></p>
-                                    <p><strong>Prelegenci:</strong> <span x-text="event.speakers?.join(', ') || 'Brak danych'"></span></p>
+                                    <p><strong>Prelegenci:</strong> <span
+                                            x-text="event.speakers?.join(', ') || 'Brak danych'"></span></p>
                                 </div>
                             </div>
                         </article>
-<!--                        <article>
-                            <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem;">
-                                <h3 x-text="event.title" style="margin: 0;"></h3>
-                                <p style="margin: 0; font-size: 0.9em;">
-                                    <span x-text="formatDate(event.date)"></span>
-                                    <span x-text="event.city" style="margin-left: 0.5rem;"></span>
-                                </p>
-                            </header>
-                            <p x-text="`${event.city}, ${event.country}`"></p>
-                            <p><strong>Organizator:</strong> <span x-text="event.organizer"></span></p>
-                            <img :src="event.thumbnail" alt="" style="max-width: 200px;">
-                            <footer>
-                                <small><span x-text="(event.tags || []).join(', ')"></span></small>
-                            </footer>
-                        </article>-->
                     </li>
                 </template>
             </ul>
@@ -571,7 +216,6 @@
     ❯
   </span>
             </div>
-
             <!-- Przeszłe -->
             <section x-show="showPast" x-transition>
                 <ul class="event-list">
@@ -603,25 +247,11 @@
                                         <p><strong>Miejsce:</strong> <span x-text="event.location"></span></p>
                                         <p><strong>Czas trwania:</strong> <span x-text="event.duration"></span></p>
                                         <p x-text="event.description"></p>
-                                        <p><strong>Prelegenci:</strong> <span x-text="event.speakers?.join(', ') || 'Brak danych'"></span></p>
+                                        <p><strong>Prelegenci:</strong> <span
+                                                x-text="event.speakers?.join(', ') || 'Brak danych'"></span></p>
                                     </div>
                                 </div>
                             </article>
-<!--                            <article>
-                                <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem;">
-                                    <h3 x-text="event.title" style="margin: 0;"></h3>
-                                    <p style="margin: 0; font-size: 0.9em;">
-                                        <span x-text="formatDate(event.date)"></span>
-                                        <span x-text="event.city" style="margin-left: 0.5rem;"></span>
-                                    </p>
-                                </header>
-                                <p x-text="`${event.city}, ${event.country}`"></p>
-                                <p><strong>Organizator:</strong> <span x-text="event.organizer"></span></p>
-                                <img :src="event.thumbnail" alt="" style="max-width: 200px;">
-                                <footer>
-                                    <small><span x-text="(event.tags || []).join(', ')"></span></small>
-                                </footer>
-                            </article>-->
                         </li>
                     </template>
                 </ul>
@@ -638,19 +268,5 @@
                                                                    target="_blank">YouTube</a></p>
     </div>
 </footer>
-<!-- Twój własny skrypt -->
-<!--<script type="module" src="js/app.js"></script>
-<script type="importmap">
-    {
-      "imports": {
-        "@fullcalendar/core": "https://esm.sh/@fullcalendar/core@6.1.17",
-        "@fullcalendar/daygrid": "https://esm.sh/@fullcalendar/daygrid@6.1.17",
-        "@fullcalendar/interaction": "https://esm.sh/@fullcalendar/interaction@6.1.17",
-        "preact": "https://esm.sh/preact"
-      }
-    }
-</script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.17/index.global.min.js"></script>-->
-
 </body>
 </html>
