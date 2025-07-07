@@ -1,0 +1,73 @@
+.promo-top {
+    background: linear-gradient(135deg, #2d3748, #4a5568, #1a202c)!important;
+
+    /* reszta bez zmian */
+    color: #333!important;
+    padding: 0;
+    text-align: center!important;
+    font-size: 1.5rem;
+    font-family: 'Courier New', monospace;
+    border: 1px solid #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    margin: 0;
+    border-radius: 8px;
+    position: relative;
+}
+
+.promo-top a {
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.promo-top img {
+    max-width: 150px;
+    margin-top: 0;
+}
+
+.promo-top p {
+    margin-bottom: 0;
+}
+
+.event-date {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.countdown {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff; /* Zmieniamy na biały */
+    margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00; /* Poświata */
+}
+
+.promo-top h2 {
+    margin: 0;
+}
+
+.promo-top .event-date {
+    color: #ffffff; /* Biały tekst */
+    margin-bottom: 0;
+    text-shadow: 0 0 1px #ffffff, 0 0 3px #ffffff, 0 0 5px #dcdcdc; /* Delikatna poświata */
+}
+
+.promo-logo {
+    width: 500px;  /* Powiększ logo */
+    height: auto;  /* Zabezpiecza proporcje */
+}
+
+.promo-top .h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Animacja matrycowa */
+@keyframes matrix {
+    0% { opacity: 0.1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.1; }
+}
