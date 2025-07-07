@@ -1,11 +1,3 @@
-body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background: #f9f9f9;
-}
-
 header, footer {
     background: #43dd2d;
     color: white;
@@ -126,11 +118,6 @@ nav {
     color: black !important;
 }
 
-/*
-.navigation-links {
-    display: block;
-}*/
-
 .side-menu {
     position: fixed;
     top: 0;
@@ -203,8 +190,8 @@ nav li {
     margin: 0;
 }
 .promo-top {
-    background-color: #000000; /* Czarne tło */
-    color: #ffffff;            /* Biały tekst */
+    background-color: #000;
+    color: #fff;
     padding: 1.5rem;
     text-align: center;
     font-size: 1.5rem;
@@ -213,7 +200,7 @@ nav li {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     margin: 1rem 0;
     border-radius: 8px;
-    position: relative;  /* Wykorzystanie pozycji do nakładania warstwy */
+    position: relative;
 }
 
 /* Półprzezroczysty gradient, ale bardziej intensywny */
@@ -266,13 +253,6 @@ nav li {
     100% { opacity: 0.1; }
 }
 
-.promo-top {
-    border: 1px solid #ff0000;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-}
-
 .promo-top h2,
 .promo-top .event-date {
     color: #ffffff; /* Biały tekst */
@@ -299,40 +279,6 @@ nav li {
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 1rem;
-}
-
-.tag {
-    background: var(--pico-primary);
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 1rem;
-    font-size: 0.75rem;
-}
-
-/* Modal styles */
-.thumbnail:hover {
-    opacity: 1;
-    outline: 2px solid var(--pico-primary);
-}
-
-.filter-tabs {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid var(--pico-muted-border-color);
-}
-
-.filter-tab {
-    padding: 0.75rem 1rem;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    color: var(--pico-muted-color);
-    transition: all 0.2s;
-}
-
-.filter-tab.active {
-    color: var(--pico-primary);
-    border-bottom-color: var(--pico-primary);
 }
 
  .filters button {
@@ -409,7 +355,6 @@ nav li {
     }
 }
 
-
 .event-details-toggle {
     margin-top: 1rem;
     border-top: 1px solid #ddd;
@@ -437,7 +382,6 @@ nav li {
     font-size: 0.95rem;
     color: #333;
 }
-
 
 .filters-compact {
     margin-block: 0.25rem !important;
