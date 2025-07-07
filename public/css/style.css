@@ -140,8 +140,10 @@ nav li {
     margin: 0;
 }
 .promo-top {
-    background-color: #000;
-    color: #fff;
+    background: linear-gradient(135deg, #2d3748, #4a5568, #1a202c);
+
+    /* reszta bez zmian */
+    color: #333;
     padding: 0;
     text-align: center;
     font-size: 1.5rem;
@@ -334,4 +336,8 @@ nav li {
 
 .filters-compact button {
     margin: 0 !important;
+}
+button[aria-label="Toggle menu"] {
+    background: #adb5bd;
+    color: white;
 }
