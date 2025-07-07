@@ -733,3 +733,20 @@ nav li {
     font-size: 0.95rem;
     color: #333;
 }
+
+
+.filters-compact {
+    margin-block: 0.25rem !important;
+    padding-block: 0.25rem !important;
+}
+
+.filters-compact section,
+.filters-compact form,
+.filters-compact fieldset {
+    margin-block: 0 !important;
+    padding-block: 0 !important;
+}
+
+.filters-compact button {
+    margin: 0 !important;
+}
