@@ -126,14 +126,3 @@ Alpine.data('events', () => ({
 Alpine.start()
 
 console.log("App.js załadowany.");
-
-document.addEventListener('keydown', function(e) {
-    const app = Alpine.$data(document.querySelector('[x-data="eventApp"]'));
-    if (!app || !app.showModal) return;
-
-    if (e.key === 'ArrowRight') {
-        app.nextImage();
-    } else if (e.key === 'ArrowLeft') {
-        app.prevImage();
-    }
-});
