@@ -222,7 +222,7 @@ nav li {
 }
 
 .event-text p {
-    margin-bottom: 0.1rem; /* Bardzo mały spacing */
+    margin-bottom: 0 !important;
 }
 
 .event-card-new div[x-data] {
