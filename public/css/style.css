@@ -4,6 +4,12 @@ main {
     margin: auto;
 }
 
+@media (max-width: 768px) {
+    main.container {
+        padding: 10px 0 0;
+    }
+}
+
 h2 {
     margin-top: 40px;
 }
@@ -195,13 +201,17 @@ nav li {
 }
 
 /* Mobile: obrazek pod spodem */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .event-card-new {
+        margin: 0.5rem 0; /* Mniejsze marginesy między kartami */
+        padding: 0.75rem; /* Bardziej kompaktowe wnętrze */
+    }
     .event-text h3 {
         font-size: 1rem;
     }
 
     .event-thumb img {
-        max-width: 100px;
+        max-width: 120px;
     }
 
     .event-tags {
@@ -255,4 +265,5 @@ nav li {
 button[aria-label="Toggle menu"] {
     background: #adb5bd;
     color: white;
+    border: 1px solid #343a40;
 }
