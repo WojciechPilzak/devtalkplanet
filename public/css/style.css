@@ -207,6 +207,9 @@ nav li {
         margin: 0.5rem 0; /* Mniejsze marginesy między kartami */
         padding: 0.75rem; /* Bardziej kompaktowe wnętrze */
     }
+    .event-text p {
+        margin-bottom: 0.1rem; /* Bardzo mały spacing */
+    }
     .event-text h3 {
         font-size: 1rem;
     }
