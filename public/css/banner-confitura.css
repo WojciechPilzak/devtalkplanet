@@ -1,14 +1,12 @@
 .promo-top {
-    background: linear-gradient(135deg, #2d3748, #4a5568, #1a202c)!important;
+    background: linear-gradient(135deg, #4a5568, #718096, #4a5568)!important;
 
     /* reszta bez zmian */
-    color: #333!important;
+    color: #ffffff!important;
     padding: 0;
     text-align: center!important;
     font-size: 1rem;
     font-family: 'Courier New', monospace;
-    border: 1px solid #ff0000;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
     margin: 0;
     border-radius: 8px;
     position: relative;
@@ -42,7 +40,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     display: inline-block;
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00; /* Poświata */
+    text-shadow: 0 0 3px #00ff00; /* Poświata */
 }
 
 .promo-top h2 {
@@ -52,7 +50,7 @@
 .promo-top .event-date {
     color: #ffffff; /* Biały tekst */
     margin-bottom: 0;
-    text-shadow: 0 0 1px #ffffff, 0 0 3px #ffffff, 0 0 5px #dcdcdc; /* Delikatna poświata */
+    text-shadow: 0 0 1px #ffffff, 0 0 3px #ffffff; /* Delikatna poświata */
 }
 
 .promo-logo {
