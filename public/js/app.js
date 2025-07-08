@@ -1,5 +1,14 @@
 import Alpine from 'https://unpkg.com/alpinejs@3.x.x/dist/module.esm.js';
-import {storage, ref, getDownloadURL, getDocs, collection, db} from "./firebase.js";
+import {
+    storage,
+    ref,
+    getDownloadURL,
+    getDocs,
+    collection,
+    db,
+    getDoc,
+    doc
+} from "./firebase.js";
 
 window.Alpine = Alpine
 
@@ -94,6 +103,41 @@ Alpine.data('events', () => ({
         this.selectedTechnologies = this.selectedTechnologies.filter(t => t !== tech);
     },
 
+    async loadEventDetails(event) {
+        if (event.details || event.detailsLoading) return;
+        event.detailsLoading = true;
+
+        try {
+            console.log("event.id =", event.id);
+
+            const docRef = doc(db, "eventDetails", event.id);
+            const docSnap = await getDoc(docRef);
+
+            console.log("docSnap.exists() =", docSnap.exists());
+            console.log("docSnap.data() =", docSnap.data());
+
+            if (docSnap.exists()) {
+                const data = docSnap.data();
+                event.details = {
+                    location: data.location?.venue || 'Brak danych',
+                    address: data.location?.address || '',
+                    duration: data.duration_hours ? `${data.duration_hours}h` : 'Brak danych',
+                    description: data.description || 'Brak opisu',
+                    speakers: data.speakers || [],
+                    link: data.link || null,
+                };
+            } else {
+                event.details = { description: 'Brak detali — dokument nie istnieje' };
+            }
+        } catch (e) {
+            console.error('Błąd Firebase:', e);
+            event.details = { description: 'Błąd ładowania detali.' };
+        }
+    },
+
+
+
+
     get availableTechnologies() {
         return [...new Set(this.events.flatMap(e => e.technologies || []))]
             .filter(tech => !this.selectedTechnologies.includes(tech))
@@ -103,6 +147,9 @@ Alpine.data('events', () => ({
 
     filterEvents(events) {
         return events.filter(e => {
+            e.details = null;
+            e.detailsLoading = false;
+
             const cityMatch = this.selectedCity === '' || e.city === this.selectedCity;
             const techMatch =
                 this.selectedTechnologies.length === 0 ||
@@ -126,3 +173,13 @@ Alpine.data('events', () => ({
 Alpine.start()
 
 console.log("App.js załadowany.");
+
+
+const test = async () => {
+    const ref = doc(db, 'eventDetails', 'ljc-meetup-july-2025');
+    const snap = await getDoc(ref);
+    console.log('TEST snapshot exists:', snap.exists());
+    console.log('TEST snapshot data:', snap.data());
+};
+
+test();

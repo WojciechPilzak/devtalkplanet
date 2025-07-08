@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -85,7 +85,7 @@
         <section x-data="{ showFilters: false }" class="filters filters-compact" style="margin-bottom: 2rem;">
             <div @click="showFilters = !showFilters"
                  style="display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 1rem; border: 1px solid #ddd; border-radius: 0.5rem; background: #fff;">
-                <span style="color: #005f99; font-weight: 500;">Filtry</span>
+                <span style="color: #005f99; font-weight: 500;">Filters</span>
                 <span style="transition: transform 0.2s; color: #888;"
                       :style="{ transform: showFilters ? 'rotate(90deg)' : 'rotate(0deg)' }">
       ❯
@@ -177,18 +177,47 @@
                             </div>
 
                             <div x-data="{ openDetails: false }" class="event-details-toggle">
-                                <button @click="openDetails = !openDetails" class="details-toggle-btn">
+                                <button @click="openDetails = !openDetails; if (openDetails) loadEventDetails(event)"
+                                        class="details-toggle-btn">
                                     <span>Details</span>
                                     <span x-show="!openDetails">▾</span>
                                     <span x-show="openDetails">▴</span>
                                 </button>
 
                                 <div x-show="openDetails" x-transition class="details-content">
-                                    <p><strong>Miejsce:</strong> <span x-text="event.location"></span></p>
-                                    <p><strong>Czas trwania:</strong> <span x-text="event.duration"></span></p>
-                                    <p x-text="event.description"></p>
-                                    <p><strong>Prelegenci:</strong> <span
-                                            x-text="event.speakers?.join(', ') || 'Brak danych'"></span></p>
+                                    <template x-if="event.details && event.details.speakers?.length">
+                                        <div>
+                                            <div x-html="event.details.description"></div>
+                                            <p><strong>Speakers:</strong></p>
+                                            <ul style="margin-left: 1rem;">
+                                                <template x-for="speaker in event.details.speakers" :key="speaker.id">
+                                                    <li style="margin-bottom: 1rem;">
+                                                        <p><strong x-text="speaker.name"></strong> – <span x-text="speaker.title"></span></p>
+                                                        <p x-text="speaker.bio" style="font-size: 0.9em; color: #555;"></p>
+                                                        <img :src="speaker.photo" alt="" style="max-width: 120px; border-radius: 0.5rem; margin-top: 0.5rem;">
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                    <template x-if="event.details && !event.details.speakers?.length">
+                                        <p><strong>Speakers:</strong> no data</p>
+                                    </template>
+                                    <template x-if="event.details?.link">
+                                        <div style="margin-top: 1rem;">
+                                            <a
+                                                    :href="event.details.link"
+                                                    target="_blank"
+                                                    rel="noopener"
+                                                    style="display: inline-block; padding: 0.5rem 1rem; background-color: #005f99; color: white; border-radius: 0.5rem; text-decoration: none;"
+                                            >
+                                                Register →
+                                            </a>
+                                        </div>
+                                    </template>
+                                    <template x-if="!event.details">
+                                        <p>Loading…</p>
+                                    </template>
                                 </div>
                             </div>
                         </article>
@@ -235,7 +264,7 @@
                                     <div x-show="openDetails" x-transition class="details-content">
                                         <p><strong>Miejsce:</strong> <span x-text="event.location"></span></p>
                                         <p><strong>Czas trwania:</strong> <span x-text="event.duration"></span></p>
-                                        <p x-text="event.description"></p>
+                                        <p x-html="event.description"></p>
                                         <p><strong>Prelegenci:</strong> <span
                                                 x-text="event.speakers?.join(', ') || 'Brak danych'"></span></p>
                                     </div>

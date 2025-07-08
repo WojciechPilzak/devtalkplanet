@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js"
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js"
 import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-storage.js"
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"
+import { getFirestore, collection, getDocs, getDoc, doc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"
 
 
 
@@ -26,5 +26,16 @@ const analytics = getAnalytics(app)
 const storage = getStorage(app)
 const db = getFirestore(app)
 
-export { app, analytics,storage, ref, getDownloadURL, db, collection, getDocs }
+export {
+    app,
+    analytics,
+    storage,
+    ref,
+    getDownloadURL,
+    db,
+    collection,
+    getDocs,
+    getDoc,
+    doc
+}
 
