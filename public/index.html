@@ -285,6 +285,106 @@
                                         <template x-if="event.details && !event.details.speakers?.length">
                                             <p><strong>Speakers:</strong> no data</p>
                                         </template>
+                                        <template x-if="event.details?.gallery?.length">
+                                            <div class="image-gallery" x-data="{
+        activeImage: null,
+        gallery: event.details.gallery,
+        touchStartX: 0,
+        touchEndX: 0,
+
+        openLightbox(img) {
+            this.activeImage = img;
+        },
+        closeLightbox() {
+            this.activeImage = null;
+        },
+        nextImage() {
+            const index = this.gallery.indexOf(this.activeImage);
+            if (index < this.gallery.length - 1) {
+                this.activeImage = this.gallery[index + 1];
+            }
+        },
+        prevImage() {
+            const index = this.gallery.indexOf(this.activeImage);
+            if (index > 0) {
+                this.activeImage = this.gallery[index - 1];
+            }
+        },
+        handleSwipe() {
+            const diff = this.touchStartX - this.touchEndX;
+            if (Math.abs(diff) < 50) return;
+
+            if (diff > 0) {
+                this.nextImage(); // swipe left
+            } else {
+                this.prevImage(); // swipe right
+            }
+        }
+    }" style="margin-top: 1rem;">
+
+                                                <!-- Miniatury -->
+                                                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                                    <template x-for="img in gallery.slice(0, 10)" :key="img">
+                                                        <img
+                                                                :src="img"
+                                                                alt="Thumbnail"
+                                                                @click="openLightbox(img)"
+                                                                style="width: 90px; height: auto; border-radius: 0.5rem; cursor: pointer; object-fit: cover;"
+                                                        >
+                                                    </template>
+                                                </div>
+
+                                                <!-- Lightbox modal -->
+                                                <div
+                                                        x-show="activeImage"
+                                                        @keydown.escape.window="closeLightbox"
+                                                        @click.outside="closeLightbox"
+                                                        @touchstart="touchStartX = $event.touches[0].clientX"
+                                                        @touchend="touchEndX = $event.changedTouches[0].clientX; handleSwipe()"
+                                                        style="position: fixed; inset: 0;
+                   background-color: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
+                   padding: 1rem; z-index: 9999;"
+                                                        x-transition
+                                                >
+                                                    <div style="max-width: 90vw; max-height: 90vh; position: relative; display: flex; align-items: center; justify-content: center;">
+
+                                                        <!-- Obrazek wycentrowany -->
+                                                        <img :src="activeImage" alt="Large"
+                                                             style="max-height: 80vh; max-width: 90vw; display: block; margin: auto; border-radius: 0.5rem;">
+
+                                                        <!-- Zamknięcie -->
+                                                        <button @click="closeLightbox"
+                                                                aria-label="Zamknij"
+                                                                style="position: absolute; top: -1rem; right: -1rem; background: white;
+                               border-radius: 50%; padding: 0.25rem 0.5rem; font-size: 1.25rem; line-height: 1;">
+                                                            &times;
+                                                        </button>
+
+                                                        <!-- Strzałka w lewo -->
+                                                        <button @click="prevImage"
+                                                                :disabled="gallery.indexOf(activeImage) === 0"
+                                                                style="position: absolute; left: -2rem; top: 50%; transform: translateY(-50%);
+                               background: white; border-radius: 50%; padding: 0.5rem; font-size: 1.5rem; cursor: pointer;
+                               opacity: 0.8;">
+                                                            ←
+                                                        </button>
+
+                                                        <!-- Strzałka w prawo -->
+                                                        <button @click="nextImage"
+                                                                :disabled="gallery.indexOf(activeImage) === gallery.length - 1"
+                                                                style="position: absolute; right: -2rem; top: 50%; transform: translateY(-50%);
+                               background: white; border-radius: 50%; padding: 0.5rem; font-size: 1.5rem; cursor: pointer;
+                               opacity: 0.8;">
+                                                            →
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+
+
+
                                         <template x-if="event.details?.link">
                                             <div style="margin-top: 1rem;">
                                                 <a

@@ -125,6 +125,7 @@ Alpine.data('events', () => ({
                     description: data.description || 'Brak opisu',
                     speakers: data.speakers || [],
                     link: data.link || null,
+                    gallery: data.gallery?.slice(0, 10) || [],
                 };
             } else {
                 event.details = { description: 'Brak detali — dokument nie istnieje' };
