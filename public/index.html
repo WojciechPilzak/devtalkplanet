@@ -192,9 +192,11 @@
                                             <ul style="margin-left: 1rem;">
                                                 <template x-for="speaker in event.details.speakers" :key="speaker.id">
                                                     <li style="margin-bottom: 1rem;">
-                                                        <p><strong x-text="speaker.name"></strong> – <span x-text="speaker.title"></span></p>
-                                                        <p x-text="speaker.bio" style="font-size: 0.9em; color: #555;"></p>
                                                         <img :src="speaker.photo" alt="" style="max-width: 120px; border-radius: 0.5rem; margin-top: 0.5rem;">
+                                                        <p><strong x-text="speaker.name"></strong> – <span x-text="speaker.bio"></span></p>
+                                                        <p><strong x-text="speaker.title" style="font-size: 0.9em; color: #555;"></strong></p>
+                                                        <p x-text="speaker.synopsis" style="font-size: 0.9em; color: #555;"></p>
+
                                                     </li>
                                                 </template>
                                             </ul>
