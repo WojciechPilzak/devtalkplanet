@@ -21,103 +21,15 @@
     "thumbnail": "https://secure.meetupstatic.com/photos/event/7/c/e/highres_528961998.webp?w=384"
   },
   {
-    "id": "remote-spring-conf",
-    "title": "Remote Spring Conference",
-    "date": "2025-08-15T10:00:00Z",
-    "city": "Online",
-    "country": "Global",
-    "technologies": ["Spring", "Java"],
-    "tags": ["remote", "conference"],
-    "organizer": "SpringOrg",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/spring-thumb.jpg"
-  },
-  {
-    "id": "gdansk-devops-september",
-    "title": "Gdańsk DevOps Meetup",
-    "date": "2025-09-05T18:30:00Z",
-    "city": "Gdańsk",
-    "country": "Poland",
-    "technologies": ["Docker", "Kubernetes"],
-    "tags": ["in-person", "devops"],
-    "organizer": "TricityTech",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/devops-thumb.jpg"
-  },
-  {
-    "id": "frontend-future-2025",
-    "title": "Frontend Future",
-    "date": "2025-11-10T09:00:00Z",
-    "city": "Berlin",
-    "country": "Germany",
-    "technologies": ["React", "TypeScript"],
-    "tags": ["conference", "frontend"],
-    "organizer": "BerlinJS",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/frontend-thumb.jpg"
-  },
-  {
-    "id": "warsaw-java-april",
-    "title": "Warsaw Java Meetup",
-    "date": "2024-04-10T17:00:00Z",
-    "city": "Warsaw",
-    "country": "Poland",
-    "technologies": ["Java"],
-    "tags": ["community"],
-    "organizer": "WarsawJUG",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/warsaw-thumb.jpg"
-  },
-  {
-    "id": "krakow-cloud-2024",
-    "title": "Kraków Cloud Meetup",
-    "date": "2024-05-12T18:30:00Z",
-    "city": "Kraków",
-    "country": "Poland",
-    "technologies": ["AWS", "Terraform"],
-    "tags": ["cloud", "in-person"],
-    "organizer": "CloudPoland",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/krakow-thumb.jpg"
-  },
-  {
-    "id": "wroclaw-ai-day",
-    "title": "Wrocław AI Day",
-    "date": "2024-06-01T11:00:00Z",
-    "city": "Wrocław",
-    "country": "Poland",
-    "technologies": ["Python", "TensorFlow"],
-    "tags": ["ai", "workshop"],
-    "organizer": "AIHub",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/ai-thumb.jpg"
-  },
-  {
-    "id": "poznan-data-meet",
-    "title": "Poznań Data Science Meetup",
-    "date": "2023-11-18T16:00:00Z",
-    "city": "Poznań",
-    "country": "Poland",
-    "technologies": ["Python", "Pandas"],
-    "tags": ["data", "meetup"],
-    "organizer": "DataPoznan",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/data-thumb.jpg"
-  },
-  {
-    "id": "berlin-legacy-cleanup",
-    "title": "Berlin Legacy Cleanup",
-    "date": "2024-02-22T14:00:00Z",
-    "city": "Berlin",
-    "country": "Germany",
-    "technologies": ["Java", "Refactoring"],
-    "tags": ["legacy", "cleanup"],
-    "organizer": "LegacyBerlin",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/legacy-thumb.jpg"
-  },
-  {
-    "id": "remote-ci-cd-day",
-    "title": "Remote CI/CD Day",
-    "date": "2023-12-10T13:00:00Z",
-    "city": "Online",
-    "country": "Global",
-    "technologies": ["GitHub Actions", "CI/CD"],
-    "tags": ["remote", "automation"],
-    "organizer": "DevOpsRemote",
-    "thumbnail": "https://res.cloudinary.com/demo/image/upload/cicd-thumb.jpg"
+    "id": "ljc-live-12-december-2024-red-hat",
+    "title": "LJC Live at Red Hat",
+    "date": "2024-12-12T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["devsecops", "java", "kubernetes", "cloud", "networking", "community"],
+    "thumbnail": "https://ik.imagekit.io/toxgb79ch/20241212RedHatLJC/https___cdn.evbuc.com_images_890970403_569937871273_1_original.avif?updatedAt=1752342566614",
+    "map_url": "https://maps.google.com/?q=30+-+36+Monument+London+EC3R+8NB"
   }
 ]
 
