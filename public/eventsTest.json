@@ -10,6 +10,116 @@
     "thumbnail": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F1055538333%2F569937871273%2F1%2Foriginal.20250618-082731?crop=focalpoint&fit=crop&w=940&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.501893939394&fp-y=0.64950166113&s=edf5398384111056493f10092f7d2f2b"
   },
   {
+    "id": "ljc-meetup-22-may-2025-lmax",
+    "title": "LJC Meet-up at LMAX",
+    "date": "2025-05-22T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "java", "open mic", "performance", "multithreading"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/lmax-event-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-live-30-january-2025-lmax",
+    "title": "LJC Live at LMAX",
+    "date": "2025-01-30T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "java", "testing", "code reading", "developer experience"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/ljc-lmax-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-meetup-29-april-2025-elastic",
+    "title": "LJC Meet-up at Elastic",
+    "date": "2025-04-29T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "java", "reactive", "developer experience", "non-blocking"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/elastic-event-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-meetup-13-may-2025-metrobank",
+    "title": "LJC Meet-up at Metro Bank",
+    "date": "2025-05-13T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "java", "jakartaee", "management", "open mic"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/metrobank-event-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-meetup-3-july-2025-redis",
+    "title": "LJC Meet-up at Redis",
+    "date": "2025-07-03T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "tech talks", "open mic", "networking", "mentorship"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944000/redis-event-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-roundtable-15-april-2025-loqate",
+    "title": "LJC Roundtable at Loqate",
+    "date": "2025-04-15T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["roundtable", "discussion", "open format", "community", "technology"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/loqate-event-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-meetup-25-february-2025-loqate",
+    "title": "LJC Meet-up at Loqate",
+    "date": "2025-02-25T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "java", "vaadin", "developer experience", "remote dev"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/ljc-loqate-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-roundtable-11-february-2025-loqate",
+    "title": "LJC Roundtable",
+    "date": "2025-02-11T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["roundtable", "discussion", "networking", "technology", "open format", "community"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1721130000/ljc-roundtable-feb.jpg"
+  },
+  {
+    "id": "ljc-meetup-23-january-2025-couchbase",
+    "title": "LJC Meet-up at Couchbase",
+    "date": "2025-01-23T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["java", "concurrency", "virtual threads", "networking", "community", "performance"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1721128800/ljc-couchbase-jan-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-meetup-25-march-2025-microsoft",
+    "title": "LJC Meet-up at Microsoft",
+    "date": "2025-03-25T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["community", "java", "reactive programming", "infra from code", "vjUG", "devoxx uk"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720944200/ljc-microsoft-thumbnail.jpg"
+  },
+  {
+    "id": "ljc-meetup-8-april-2025-couchbase",
+    "title": "LJC Meet-up at Couchbase",
+    "date": "2025-04-08T18:00:00Z",
+    "city": "London",
+    "country": "UK",
+    "organiser": "LJC",
+    "tags": ["java", "community", "build tools", "observability", "networking", "distributed systems"],
+    "thumbnail": "https://res.cloudinary.com/demo/image/upload/v1720951200/ljc-couchbase-thumbnail.jpg"
+  },
+  {
     "id": "ljc-meetup-july-2025",
     "title": "London Java Community Meetup",
     "date": "2025-07-20T18:00:00Z",
