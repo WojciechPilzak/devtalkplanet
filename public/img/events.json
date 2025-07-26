@@ -98,3 +98,58 @@
     }
   ]
 }
+
+export const EventTypes = {
+  CONFERENCE: 'conference',
+  MEETUP: 'meetup',
+  ROUNDTABLE: 'roundtable',
+  SOCIAL: 'social',
+  WORKSHOP: 'workshop',
+  WEBINAR: 'webinar',
+  HACKATHON: 'hackathon',
+  TALK: 'talk',
+};
+
+export const EventTypes = {
+conference: {
+label: 'Conference',
+defaultThumbnail: 'img/thumbnail_conference_default.webp',
+hasSpeakers: true,
+},
+meetup: {
+label: 'Meet-up',
+defaultThumbnail: 'img/thumbnail_meetup_default.webp',
+hasSpeakers: true,
+},
+roundtable: {
+label: 'Roundtable',
+defaultThumbnail: 'img/thumbnail_roundtable_default.webp',
+hasSpeakers: false,
+},
+social: {
+label: 'Social',
+defaultThumbnail: 'img/thumbnail_social_default.webp',
+hasSpeakers: false,
+},
+workshop: {
+label: 'Workshop',
+defaultThumbnail: 'img/thumbnail_workshop_default.webp',
+hasSpeakers: true,
+},
+webinar: {
+label: 'Webinar',
+defaultThumbnail: 'img/thumbnail_webinar_default.webp',
+hasSpeakers: true,
+},
+hackathon: {
+label: 'Hackathon',
+defaultThumbnail: 'img/thumbnail_hackathon_default.webp',
+hasSpeakers: false,
+},
+talk: {
+label: 'Talk',
+defaultThumbnail: 'img/thumbnail_talk_default.webp',
+hasSpeakers: true,
+},
+};
+

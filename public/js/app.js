@@ -42,7 +42,7 @@ Alpine.data('events', () => ({
     selectedCity: '',
     selectedTags: [],
     selectedTechnologies: [],
-    showPast: false,
+    showPast: true,
 
     async init() {
         try {
@@ -125,7 +125,7 @@ Alpine.data('events', () => ({
                     description: data.description || 'Brak opisu',
                     speakers: data.speakers || [],
                     link: data.link || null,
-                    gallery: data.gallery?.slice(0, 10) || [],
+                    gallery: data.gallery?.slice(0, 15) || [],
                 };
             } else {
                 event.details = { description: 'Brak detali — dokument nie istnieje' };
