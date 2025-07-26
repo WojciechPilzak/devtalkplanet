@@ -192,10 +192,15 @@
                                             <ul style="margin-left: 1rem;">
                                                 <template x-for="speaker in event.details.speakers" :key="speaker.id">
                                                     <li style="margin-bottom: 1rem;">
-                                                        <img :src="speaker.photo" alt="" style="max-width: 120px; border-radius: 0.5rem; margin-top: 0.5rem;" @error="$el.src = 'img/avatar_placeholder.webp'">
-                                                        <p><strong x-text="speaker.name"></strong> – <span x-text="speaker.bio"></span></p>
-                                                        <p><strong x-text="speaker.title" style="font-size: 0.9em; color: #555;"></strong></p>
-                                                        <p x-text="speaker.synopsis" style="font-size: 0.9em; color: #555;"></p>
+                                                        <img :src="speaker.photo" alt=""
+                                                             style="max-width: 120px; border-radius: 0.5rem; margin-top: 0.5rem;"
+                                                             @error="$el.src = 'img/avatar_placeholder.webp'">
+                                                        <p><strong x-text="speaker.name"></strong> – <span
+                                                                x-text="speaker.bio"></span></p>
+                                                        <p><strong x-text="speaker.title"
+                                                                   style="font-size: 0.9em; color: #555;"></strong></p>
+                                                        <p x-text="speaker.synopsis"
+                                                           style="font-size: 0.9em; color: #555;"></p>
 
                                                     </li>
                                                 </template>
@@ -270,12 +275,19 @@
                                                 <div x-html="event.details.description"></div>
                                                 <p><strong>Speakers:</strong></p>
                                                 <ul style="margin-left: 1rem;">
-                                                    <template x-for="speaker in event.details.speakers" :key="speaker.id">
+                                                    <template x-for="speaker in event.details.speakers"
+                                                              :key="speaker.id">
                                                         <li style="margin-bottom: 1rem;">
-                                                            <img :src="speaker.photo ? speaker.photo : 'img/avatar_placeholder.webp'" alt="" style="max-width: 120px; border-radius: 0.5rem; margin-top: 0.5rem;">
-                                                            <p><strong x-text="speaker.name"></strong> – <span x-text="speaker.bio"></span></p>
-                                                            <p><strong x-text="speaker.title" style="font-size: 0.9em; color: #555;"></strong></p>
-                                                            <p x-text="speaker.synopsis" style="font-size: 0.9em; color: #555;"></p>
+                                                            <img :src="speaker.photo ? speaker.photo : 'img/avatar_placeholder.webp'"
+                                                                 alt=""
+                                                                 style="max-width: 120px; border-radius: 0.5rem; margin-top: 0.5rem;">
+                                                            <p><strong x-text="speaker.name"></strong> – <span
+                                                                    x-text="speaker.bio"></span></p>
+                                                            <p><strong x-text="speaker.title"
+                                                                       style="font-size: 0.9em; color: #555;"></strong>
+                                                            </p>
+                                                            <p x-text="speaker.synopsis"
+                                                               style="font-size: 0.9em; color: #555;"></p>
 
                                                         </li>
                                                     </template>
@@ -384,7 +396,6 @@
                                         </template>
 
 
-
                                         <template x-if="event.details?.link">
                                             <div style="margin-top: 1rem;">
                                                 <a
@@ -414,6 +425,17 @@
 <footer class="site-footer">
     <div class="footer-content">
         <p>&copy; 2025 DevTalk Planet. All rights reserved.</p>
+        <p>
+        <div x-data="{
+    user: 'info',
+    domain: 'devtalkplanet.com',
+    get email() {
+        return `${this.user}@${this.domain}`;
+    }
+}">
+            <a :href="`mailto:${email}`" x-text="email"></a>
+        </div>
+        </p>
         <p>Powered by nerds, fueled by caffeine ☕</p>
         <p><a href="#">Contact</a> | <a href="#">Partners</a> | <a href="https://youtube.com/@devtalkplanet"
                                                                    target="_blank">YouTube</a></p>
